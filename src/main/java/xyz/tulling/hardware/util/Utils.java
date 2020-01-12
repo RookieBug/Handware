@@ -1,13 +1,11 @@
 package xyz.tulling.hardware.util;
 
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import xyz.tulling.hardware.entry.RegisterInfo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class Utils {
 
@@ -22,7 +20,7 @@ public class Utils {
      * @param lateTime 设置的迟到的时间
      * @return
      */
-    public RegisterInfo getRegisterInfo(String json, LocalDateTime lateTime) {
+    public static RegisterInfo getRegisterInfo(String json, LocalDateTime lateTime) {
         JSONObject obj = JSONObject.parseObject(json);
         // 解析JSON信息
         String cardId = obj.getString(Constant.CARD_ID);
