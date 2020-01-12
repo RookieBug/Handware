@@ -3,11 +3,17 @@ package xyz.tulling.hardware.handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import org.apache.log4j.Logger;
+import xyz.tulling.hardware.dao.RegisterInfoDao;
+import xyz.tulling.hardware.entry.RegisterInfo;
+import xyz.tulling.hardware.exception.UnKnowCardException;
+import xyz.tulling.hardware.util.Utils;
 
 import java.io.UnsupportedEncodingException;
 
 public class HardwareHandler extends ChannelInboundHandlerAdapter {
     private String msg;
+    private Logger logger = Logger.getLogger(HardwareHandler.class);
 
     /**
      * 通道活跃
@@ -53,10 +59,22 @@ public class HardwareHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) {
         System.out.println("服务端接收数据完毕..");
+        System.out.println(msg);
         // 记录签到信息
-
+        RegisterInfoDao rid = Utils.getMapper(RegisterInfoDao.class);
+        try {
+            RegisterInfo registerInfo = Utils.getRegisterInfo(msg);
+            Integer rows = rid.insRegisterInfo(registerInfo);
+            if (rows >= 0) {
+                logger.info("签到成功！");
+            } else {
+                logger.info("签到失败！");
+            }
+        } catch (UnKnowCardException uke) {
+            logger.info(uke.getMsg());
+        }
         // 第一种方法：写一个空的buf，并刷新写出区域。完成后关闭sock channel连接。
         // tx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
         ctx.flush();
