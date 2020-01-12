@@ -1,11 +1,10 @@
-package xyz.tulling.esp8266.config;
+package xyz.tulling.hardware.config;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 import io.netty.handler.codec.string.StringEncoder;
-import xyz.tulling.esp8266.handler.HardwareHandler;
+import xyz.tulling.hardware.handler.HardwareHandler;
 
 import java.nio.charset.Charset;
 

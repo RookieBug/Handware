@@ -1,4 +1,4 @@
-package xyz.tulling.esp8266.server;
+package xyz.tulling.hardware.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -6,7 +6,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import xyz.tulling.esp8266.config.HardwareServerInitializer;
+import xyz.tulling.hardware.config.HardwareServerInitializer;
 
 public class HardwareServer {
 

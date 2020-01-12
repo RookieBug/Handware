@@ -1,6 +1,6 @@
-package xyz.tulling.esp8266;
+package xyz.tulling.hardware;
 
-import xyz.tulling.esp8266.server.HardwareServer;
+import xyz.tulling.hardware.server.HardwareServer;
 
 public class App {
 

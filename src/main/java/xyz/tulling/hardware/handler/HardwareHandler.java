@@ -1,8 +1,6 @@
-package xyz.tulling.esp8266.handler;
+package xyz.tulling.hardware.handler;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 

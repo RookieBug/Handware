@@ -1,4 +1,4 @@
-package xyz.tulling.esp8266.entry;
+package xyz.tulling.hardware.entry;
 
 import lombok.Data;
 
